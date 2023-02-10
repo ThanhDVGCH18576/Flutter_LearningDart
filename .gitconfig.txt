@@ -1,0 +1,3 @@
+[user]
+name = buitienthanh	
+email = buitienthanh1213@gmail.com
