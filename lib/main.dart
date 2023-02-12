@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:learningdart/views/login_view.dart';
+import 'package:learningdart/views/note_view.dart';
 import 'package:learningdart/views/register_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -27,11 +28,12 @@ class MyApp extends StatelessWidget {
       home: const HomePage(),
       routes: {
         "/login/": (context) => LoginView(),
-        "/register/": (context) => RegisterView()
+        "/register/": (context) => RegisterView(),
+        "/note/":(context) => NoteView(),
       },
       locale: Locale("en"),
       localizationsDelegates: [
-        AppLocalizations.delegate, 
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
@@ -56,12 +58,23 @@ class HomePage extends StatelessWidget {
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
-            final user = FirebaseAuth.instance.currentUser;
-            if (user?.emailVerified ?? false) {
+            //final user = FirebaseAuth.instance.currentUser;
+            //print(user);
+            //print(user?.emailVerified);
+            //if (user != null) {
+              // if (user.emailVerified) {
+              //   return LoginView();
+              // } else {
+              //   return LoginView();
+              // }
+              // Navigator.of(context).pushNamedAndRemoveUntil( 
+              //         '/note/',
+              //         (_) => false,
+              // );
+              // / print(user.emailVerified);
               return LoginView();
-            } else {
-              return LoginView();
-            }
+            //}
+           // return Text("Done");
           default:
             return Text("Loading");
         }
@@ -69,3 +82,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+

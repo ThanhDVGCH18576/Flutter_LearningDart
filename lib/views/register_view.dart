@@ -29,7 +29,8 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Đăng ký"), backgroundColor: Colors.amber),
+      appBar:
+          AppBar(title: const Text("Đăng ký"), backgroundColor: Colors.amber),
       body: Column(
         children: [
           TextField(
@@ -37,24 +38,41 @@ class _RegisterViewState extends State<RegisterView> {
             keyboardType: TextInputType.emailAddress,
             enableSuggestions: false,
             autocorrect: false,
-            decoration: const InputDecoration(hintText: "Vui lòng nhập Email"),
+            decoration: const InputDecoration(hintText: "Vui lòng nhập email"),
           ),
           TextField(
             controller: _password,
             obscureText: true,
             enableSuggestions: false,
             autocorrect: false,
-            decoration: const InputDecoration(hintText: "Vui lòng nhập Password"),
+            decoration:
+                const InputDecoration(hintText: "Vui lòng nhập mật khẩu"),
           ),
           TextButton(
             onPressed: () async {
               final email = _email.text;
               final password = _password.text;
-    
-              final userCredential = await FirebaseAuth.instance
-                  .createUserWithEmailAndPassword(
-                      email: email, password: password);
-              print(userCredential);
+              try {
+                final userCredential = await FirebaseAuth.instance
+                    .createUserWithEmailAndPassword(
+                        email: email, password: password);
+                showMessageDialog(context,"Đăng ký thành công");
+                print(userCredential);
+              } on FirebaseAuthException catch (e) {
+                switch (e.code) {
+                  case "weak-password":
+                    showMessageDialog(context,"Mật khẩu yếu.");
+                    break;
+                  case "email-already-in-use":
+                    showMessageDialog(context,"Email đã được sử dụng.");
+                    break;
+                  case "invaild-email":
+                    showMessageDialog(context,"Email không tồn tại.");
+                    break;
+                  default:
+                    break;
+                }
+              }
             },
             child: const Text("Đăng ký"),
           ),
@@ -68,4 +86,22 @@ class _RegisterViewState extends State<RegisterView> {
       ),
     );
   }
+}
+
+Future<bool> showMessageDialog(BuildContext context,String message) {
+  return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Thông báo"),
+          content:  Text(message),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+                child: const Text("Hủy bỏ")),
+          ],
+        );
+      }).then((value) => value ?? false);
 }
