@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
         Locale('en'), // English
         Locale('es'), // Spanish
       ],
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -58,6 +59,7 @@ class HomePage extends StatelessWidget {
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
+            return LoginView();
             //final user = FirebaseAuth.instance.currentUser;
             //print(user);
             //print(user?.emailVerified);
@@ -72,7 +74,7 @@ class HomePage extends StatelessWidget {
               //         (_) => false,
               // );
               // / print(user.emailVerified);
-              return LoginView();
+              
             //}
            // return Text("Done");
           default:

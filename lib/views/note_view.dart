@@ -1,6 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:learningdart/views/pie_chart/pie_chart.dart';
+import 'package:learningdart/views/pie_chart/pie_chart_series.dart';
+import 'bar_chart/bar_chart.dart';
+import 'bar_chart/bar_chart_series.dart';
+import 'line_chart/line_chart.dart';
+import 'line_chart/line_chart_series.dart';
 
 class NoteView extends StatefulWidget {
   @override
@@ -23,6 +29,93 @@ class _NoteViewState extends State<NoteView> {
     });
   }
 
+  final List<BarChartSeries> barChartData = [
+
+    BarChartSeries(
+      year: "2017",
+      developers: 40000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    BarChartSeries(
+      year: "2018",
+      developers: 5000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    BarChartSeries(
+      year: "2019",
+      developers: 40000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    BarChartSeries(
+      year: "2020",
+      developers: 35000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    BarChartSeries(
+      year: "2021",
+      developers: 45000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+  ];
+
+  final List<PieChartSeries> pieChartData = [
+
+    PieChartSeries(
+      year: "2017",
+      developers: 40000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    PieChartSeries(
+      year: "2018",
+      developers: 5000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    PieChartSeries(
+      year: "2019",
+      developers: 40000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    PieChartSeries(
+      year: "2020",
+      developers: 35000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    PieChartSeries(
+      year: "2021",
+      developers: 45000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+  ];
+
+  final List<LineChartSeries> lineChartData = [
+
+    LineChartSeries(
+      year: "2017",
+      developers: 40000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    LineChartSeries(
+      year: "2018",
+      developers: 5000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    LineChartSeries(
+      year: "2019",
+      developers: 40000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    LineChartSeries(
+      year: "2020",
+      developers: 35000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+    LineChartSeries(
+      year: "2021",
+      developers: 45000,
+      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +130,7 @@ class _NoteViewState extends State<NoteView> {
                   final shouldLogout = await showLogOutDialog(context);
                   if(shouldLogout){
                     await FirebaseAuth.instance.signOut();
+                    // ignore: use_build_context_synchronously
                     Navigator.of(context).pushNamedAndRemoveUntil(
                       '/login/',
                       (route) => false,
@@ -48,8 +142,8 @@ class _NoteViewState extends State<NoteView> {
             itemBuilder: (context) {
               return const [
                 PopupMenuItem<MenuAction>(
-                  child: const Text("Đăng xuất"),
                   value: MenuAction.logout,
+                  child: Text("Đăng xuất"),
                 )
               ];
             },
@@ -59,13 +153,15 @@ class _NoteViewState extends State<NoteView> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: 
+          <Widget>[
+            LineChart(data:lineChartData),
             const Text(
               'You have pushed the button this many times:',
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),

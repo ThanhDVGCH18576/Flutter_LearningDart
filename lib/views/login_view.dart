@@ -68,6 +68,7 @@ class _LoginViewState extends State<LoginView> {
                         email: email, password: password);
                 print(userCredential);
 
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pushNamedAndRemoveUntil(
                   '/note/',
                   (route) => false,
