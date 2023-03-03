@@ -5,6 +5,7 @@ import 'package:learningdart/views/pie_chart/pie_chart.dart';
 import 'package:learningdart/views/pie_chart/pie_chart_series.dart';
 import 'bar_chart/bar_chart.dart';
 import 'bar_chart/bar_chart_series.dart';
+import 'bottom_navigation.dart';
 import 'line_chart/line_chart.dart';
 import 'line_chart/line_chart_series.dart';
 
@@ -119,6 +120,7 @@ class _NoteViewState extends State<NoteView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavagation(),
       appBar: AppBar(
         title: Text("Chart",style:TextStyle(color: Colors.white) ),
         backgroundColor: Colors.deepPurple,
@@ -179,9 +181,6 @@ class _NoteViewState extends State<NoteView> {
     );
   }
 }
-
-
-
 
 Future<bool> showLogOutDialog(BuildContext context) {
   return showDialog<bool>(
