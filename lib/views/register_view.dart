@@ -33,7 +33,7 @@ class _RegisterViewState extends State<RegisterView> {
           AppBar(title: const Text("Đăng ký"), backgroundColor: Colors.amber),
       body: Column(
         children: [
-          TextField(
+           TextField(
             controller: _email,
             keyboardType: TextInputType.emailAddress,
             enableSuggestions: false,
@@ -56,6 +56,7 @@ class _RegisterViewState extends State<RegisterView> {
                 final userCredential = await FirebaseAuth.instance
                     .createUserWithEmailAndPassword(
                         email: email, password: password);
+                // ignore: use_build_context_synchronously
                 showMessageDialog(context,"Đăng ký thành công");
                 print(userCredential);
               } on FirebaseAuthException catch (e) {

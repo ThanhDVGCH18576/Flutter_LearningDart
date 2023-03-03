@@ -155,7 +155,7 @@ class _NoteViewState extends State<NoteView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: 
           <Widget>[
-            LineChart(data:lineChartData),
+            BarChart(data:barChartData),
             const Text(
               'You have pushed the button this many times:',
             ),
