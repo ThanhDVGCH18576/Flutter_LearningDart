@@ -120,10 +120,11 @@ class _NoteViewState extends State<NoteView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter Learning"),
-        backgroundColor: Colors.amber,
+        title: Text("Chart",style:TextStyle(color: Colors.white) ),
+        backgroundColor: Colors.deepPurple,
         actions: [
           PopupMenuButton<MenuAction>(
+            color: Colors.white,
             onSelected: (value) async {
               switch (value) {
                 case MenuAction.logout:
@@ -167,9 +168,13 @@ class _NoteViewState extends State<NoteView> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.deepPurple,
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
