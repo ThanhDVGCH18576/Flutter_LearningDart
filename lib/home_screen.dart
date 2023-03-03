@@ -159,6 +159,23 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _selectedIndex = index;
     });
+
+    switch (index) {
+      case 0:
+      Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/home-screen/',
+                      (route) => false,
+                    );
+        break;
+      case 1:
+      Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/note/',
+                      (route) => false,
+                    );
+        break;
+      case 2:
+        break;
+    }
   }
 
   Future<bool> showLogOutDialog(BuildContext context) {
