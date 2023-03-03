@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, use_build_context_synchronously, unused_field
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'db_handler.dart';
+
+enum MenuAction { logout }
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -158,6 +161,29 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  Future<bool> showLogOutDialog(BuildContext context) {
+    return showDialog<bool>(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text("Đăng xuất"),
+            content: const Text("Bạn có chắc muốn thoát đăng xuất?"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                  child: const Text("Đăng xuất")),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                  child: const Text("Hủy bỏ")),
+            ],
+          );
+        }).then((value) => value ?? false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -169,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Business',
+            label: 'Chart',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
@@ -182,7 +208,38 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       backgroundColor: Color.fromARGB(255, 225, 222, 235),
       appBar: AppBar(
-        title: Text("CURD Operations Demotrations"),
+        title: Text(
+          "CURD Operations Demotrations",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.deepPurple,
+        actions: [
+          PopupMenuButton<MenuAction>(
+            color: Colors.white,
+            onSelected: (value) async {
+              switch (value) {
+                case MenuAction.logout:
+                  final shouldLogout = await showLogOutDialog(context);
+                  if (shouldLogout) {
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/login/',
+                      (route) => false,
+                    );
+                  }
+                  break;
+              }
+            },
+            itemBuilder: (context) {
+              return const [
+                PopupMenuItem<MenuAction>(
+                  value: MenuAction.logout,
+                  child: Text("Đăng xuất"),
+                )
+              ];
+            },
+          )
+        ],
       ),
       body: _isLoading
           ? Center(
@@ -234,6 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.deepPurple,
         onPressed: () => showBottomSheet(null),
         child: Icon(
           Icons.add,

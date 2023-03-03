@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
       title: 'My App',
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primarySwatch: Colors.deepPurple,
       ),
       home: const HomePage(),
       routes: {
