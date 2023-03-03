@@ -1,9 +1,15 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class BottomNavagation extends StatefulWidget {
-  const BottomNavagation({super.key});
+
+  final int tabKey;
+
+  const BottomNavagation({super.key,required this.tabKey});
+
 
   @override
   State<BottomNavagation> createState() => _BottomNavagationState();
@@ -12,7 +18,7 @@ class BottomNavagation extends StatefulWidget {
 class _BottomNavagationState extends State<BottomNavagation> {
 
   //Navbar bottom
-  int _selectedIndex = 0;
+  late  int _selectedIndex = widget.tabKey;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[

@@ -120,7 +120,7 @@ class _NoteViewState extends State<NoteView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavagation(),
+      bottomNavigationBar: BottomNavagation(tabKey: 1),
       appBar: AppBar(
         title: Text("Chart",style:TextStyle(color: Colors.white) ),
         backgroundColor: Colors.deepPurple,
