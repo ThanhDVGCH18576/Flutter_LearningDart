@@ -137,7 +137,6 @@ class _HomeScreenState extends State<HomeScreen> {
     _refreshData();
   }
 
-  
   Future<bool> showLogOutDialog(BuildContext context) {
     return showDialog<bool>(
         context: context,
