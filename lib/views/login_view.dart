@@ -70,7 +70,7 @@ class _LoginViewState extends State<LoginView> {
 
                 // ignore: use_build_context_synchronously
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                  '/note/',
+                  '/home-screen/',
                   (route) => false,
                 );
               } on FirebaseAuthException catch (ex) {

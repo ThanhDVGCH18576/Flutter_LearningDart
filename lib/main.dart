@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "/login/": (context) => LoginView(),
         "/register/": (context) => RegisterView(),
-        "/note/":(context) => HomeScreen(),
+        "/note/":(context) => NoteView(),
+        "/home-screen/":(context) => HomeScreen(),
       },
       locale: Locale("en"),
       localizationsDelegates: [

@@ -1,8 +1,8 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors, use_build_context_synchronously, unused_field
 
 import 'package:flutter/material.dart';
-import 'db_handler.dart';
 
+import 'db_handler.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -59,21 +59,21 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             TextField(
               controller: _titleController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "Title",
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
             TextField(
               controller: _descController,
               maxLines: 4,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "Description",
               ),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: () async {
@@ -91,10 +91,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.of(context).pop();
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(18),
+                  padding: EdgeInsets.all(15),
                   child: Text(
                     id == null ? "Add Data" : "Update",
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                 ),
               ),
@@ -133,9 +133,10 @@ class _HomeScreenState extends State<HomeScreen> {
     _refreshData();
   }
 
+  //Navbar bottom
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
       'Index 0: Home',
@@ -179,29 +180,32 @@ class _HomeScreenState extends State<HomeScreen> {
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
-      backgroundColor: const Color.fromARGB(255, 225, 222, 235),
+      backgroundColor: Color.fromARGB(255, 225, 222, 235),
       appBar: AppBar(
-        title: const Text("CURD Operations Demotrations"),
+        title: Text("CURD Operations Demotrations"),
       ),
       body: _isLoading
-          ? const Center(
+          ? Center(
               child: CircularProgressIndicator(),
             )
           : ListView.builder(
               itemCount: _allData.length,
               itemBuilder: (context, index) => Card(
-                margin: const EdgeInsets.all(15),
+                margin: EdgeInsets.all(10),
                 child: ListTile(
                     title: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5),
+                      padding: EdgeInsets.symmetric(vertical: 5),
                       child: Text(
                         _allData[index]['title'],
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                         ),
                       ),
                     ),
-                    subtitle: Text(_allData[index]['desc']),
+                    subtitle: Text(
+                      _allData[index]['desc'],
+                      style: TextStyle(fontSize: 15, color: Colors.blue),
+                    ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -210,7 +214,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onPressed: () {
                             showBottomSheet(_allData[index]['id']);
                           },
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.edit,
                             color: Colors.indigo,
                           ),
@@ -220,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onPressed: () {
                             _deleteData(_allData[index]['id']);
                           },
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.delete,
                             color: Colors.redAccent,
                           ),
@@ -231,7 +235,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => showBottomSheet(null),
-        child: const Icon(
+        child: Icon(
           Icons.add,
           color: Colors.white,
         ),
