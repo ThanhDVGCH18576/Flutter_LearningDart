@@ -29,24 +29,31 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(title: const Text("Đăng ký"), backgroundColor: Colors.amber),
+      appBar: AppBar(
+          title: const Text("Đăng ký", style: TextStyle(color: Colors.white)),
+          backgroundColor: Colors.deepPurple),
       body: Column(
         children: [
-           TextField(
-            controller: _email,
-            keyboardType: TextInputType.emailAddress,
-            enableSuggestions: false,
-            autocorrect: false,
-            decoration: const InputDecoration(hintText: "Vui lòng nhập email"),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _email,
+              keyboardType: TextInputType.emailAddress,
+              enableSuggestions: false,
+              autocorrect: false,
+              decoration: const InputDecoration(hintText: "Vui lòng nhập email"),
+            ),
           ),
-          TextField(
-            controller: _password,
-            obscureText: true,
-            enableSuggestions: false,
-            autocorrect: false,
-            decoration:
-                const InputDecoration(hintText: "Vui lòng nhập mật khẩu"),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _password,
+              obscureText: true,
+              enableSuggestions: false,
+              autocorrect: false,
+              decoration:
+                  const InputDecoration(hintText: "Vui lòng nhập mật khẩu"),
+            ),
           ),
           TextButton(
             onPressed: () async {
@@ -57,18 +64,18 @@ class _RegisterViewState extends State<RegisterView> {
                     .createUserWithEmailAndPassword(
                         email: email, password: password);
                 // ignore: use_build_context_synchronously
-                showMessageDialog(context,"Đăng ký thành công");
+                showMessageDialog(context, "Đăng ký thành công");
                 print(userCredential);
               } on FirebaseAuthException catch (e) {
                 switch (e.code) {
                   case "weak-password":
-                    showMessageDialog(context,"Mật khẩu yếu.");
+                    showMessageDialog(context, "Mật khẩu yếu.");
                     break;
                   case "email-already-in-use":
-                    showMessageDialog(context,"Email đã được sử dụng.");
+                    showMessageDialog(context, "Email đã được sử dụng.");
                     break;
                   case "invaild-email":
-                    showMessageDialog(context,"Email không tồn tại.");
+                    showMessageDialog(context, "Email không tồn tại.");
                     break;
                   default:
                     break;
@@ -89,13 +96,13 @@ class _RegisterViewState extends State<RegisterView> {
   }
 }
 
-Future<bool> showMessageDialog(BuildContext context,String message) {
+Future<bool> showMessageDialog(BuildContext context, String message) {
   return showDialog<bool>(
       context: context,
       builder: (context) {
         return AlertDialog(
           title: const Text("Thông báo"),
-          content:  Text(message),
+          content: Text(message),
           actions: [
             TextButton(
                 onPressed: () {
