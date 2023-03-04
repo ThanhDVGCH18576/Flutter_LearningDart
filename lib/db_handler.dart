@@ -1,3 +1,5 @@
+// ignore_for_file: empty_catches
+
 import 'package:sqflite/sqflite.dart' as sql;
 
 class SQLHandler {

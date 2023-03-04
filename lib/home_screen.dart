@@ -94,11 +94,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   // Hide bottom sheet
                   Navigator.of(context).pop();
                 },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.amber,
+                  onPrimary: Colors.black,
+                ),
                 child: Padding(
                   padding: EdgeInsets.all(15),
                   child: Text(
                     id == null ? "Add Data" : "Update",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),

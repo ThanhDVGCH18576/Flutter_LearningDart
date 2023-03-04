@@ -31,7 +31,6 @@ class _NoteViewState extends State<NoteView> {
   }
 
   final List<BarChartSeries> barChartData = [
-
     BarChartSeries(
       year: "2017",
       developers: 40000,
@@ -39,28 +38,30 @@ class _NoteViewState extends State<NoteView> {
     ),
     BarChartSeries(
       year: "2018",
-      developers: 5000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+      developers: 10000,
+      barColor: charts.ColorUtil.fromDartColor(Color.fromARGB(255, 255, 2, 2)),
     ),
     BarChartSeries(
       year: "2019",
       developers: 40000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+      barColor:
+          charts.ColorUtil.fromDartColor(Color.fromARGB(255, 119, 0, 255)),
     ),
     BarChartSeries(
       year: "2020",
-      developers: 35000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+      developers: 30000,
+      barColor:
+          charts.ColorUtil.fromDartColor(Color.fromARGB(255, 255, 221, 0)),
     ),
     BarChartSeries(
       year: "2021",
       developers: 45000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
+      barColor:
+          charts.ColorUtil.fromDartColor(Color.fromARGB(255, 255, 0, 221)),
     ),
   ];
 
   final List<PieChartSeries> pieChartData = [
-
     PieChartSeries(
       year: "2017",
       developers: 40000,
@@ -89,7 +90,6 @@ class _NoteViewState extends State<NoteView> {
   ];
 
   final List<LineChartSeries> lineChartData = [
-
     LineChartSeries(
       year: "2017",
       developers: 40000,
@@ -122,16 +122,17 @@ class _NoteViewState extends State<NoteView> {
     return Scaffold(
       bottomNavigationBar: BottomNavagation(tabKey: 1),
       appBar: AppBar(
-        title: Text("Chart",style:TextStyle(color: Colors.white) ),
+        title: Text("Chart",
+            style: TextStyle(color: Color.fromARGB(255, 215, 182, 182))),
         backgroundColor: Colors.deepPurple,
         actions: [
           PopupMenuButton<MenuAction>(
-            color: Colors.white,
+            color: Color.fromARGB(255, 247, 247, 247),
             onSelected: (value) async {
               switch (value) {
                 case MenuAction.logout:
                   final shouldLogout = await showLogOutDialog(context);
-                  if(shouldLogout){
+                  if (shouldLogout) {
                     await FirebaseAuth.instance.signOut();
                     // ignore: use_build_context_synchronously
                     Navigator.of(context).pushNamedAndRemoveUntil(
@@ -156,9 +157,8 @@ class _NoteViewState extends State<NoteView> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: 
-          <Widget>[
-            BarChart(data:barChartData),
+          children: <Widget>[
+            BarChart(data: barChartData),
             const Text(
               'You have pushed the button this many times:',
             ),
