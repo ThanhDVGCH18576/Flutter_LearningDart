@@ -63,69 +63,70 @@ class _NoteViewState extends State<NoteView> {
     ),
   ];
 
-  final List<PieChartSeries> pieChartData = [
-    PieChartSeries(
-      year: "2017",
-      developers: 40000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
-    ),
-    PieChartSeries(
-      year: "2018",
-      developers: 5000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
-    ),
-    PieChartSeries(
-      year: "2019",
-      developers: 40000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
-    ),
-    PieChartSeries(
-      year: "2020",
-      developers: 35000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
-    ),
-    PieChartSeries(
-      year: "2021",
-      developers: 45000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
-    ),
-  ];
+  // final List<PieChartSeries> pieChartData = [
+  //   PieChartSeries(
+  //     year: "2017",
+  //     developers: 40000,
+  //     barColor: charts.ColorUtil.fromDartColor(Colors.green),
+  //   ),
+  //   PieChartSeries(
+  //     year: "2018",
+  //     developers: 5000,
+  //     barColor: charts.ColorUtil.fromDartColor(Colors.green),
+  //   ),
+  //   PieChartSeries(
+  //     year: "2019",
+  //     developers: 40000,
+  //     barColor: charts.ColorUtil.fromDartColor(Colors.green),
+  //   ),
+  //   PieChartSeries(
+  //     year: "2020",
+  //     developers: 35000,
+  //     barColor: charts.ColorUtil.fromDartColor(Colors.green),
+  //   ),
+  //   PieChartSeries(
+  //     year: "2021",
+  //     developers: 45000,
+  //     barColor: charts.ColorUtil.fromDartColor(Colors.green),
+  //   ),
+  // ];
 
-  final List<LineChartSeries> lineChartData = [
-    LineChartSeries(
-      year: "2017",
-      developers: 40000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
-    ),
-    LineChartSeries(
-      year: "2018",
-      developers: 5000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
-    ),
-    LineChartSeries(
-      year: "2019",
-      developers: 40000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
-    ),
-    LineChartSeries(
-      year: "2020",
-      developers: 35000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
-    ),
-    LineChartSeries(
-      year: "2021",
-      developers: 45000,
-      barColor: charts.ColorUtil.fromDartColor(Colors.green),
-    ),
-  ];
+  // final List<LineChartSeries> lineChartData = [
+  //   LineChartSeries(
+  //     year: "2017",
+  //     developers: 40000,
+  //     barColor: charts.ColorUtil.fromDartColor(Colors.green),
+  //   ),
+  //   LineChartSeries(
+  //     year: "2018",
+  //     developers: 5000,
+  //     barColor: charts.ColorUtil.fromDartColor(Colors.green),
+  //   ),
+  //   LineChartSeries(
+  //     year: "2019",
+  //     developers: 40000,
+  //     barColor: charts.ColorUtil.fromDartColor(Colors.green),
+  //   ),
+  //   LineChartSeries(
+  //     year: "2020",
+  //     developers: 35000,
+  //     barColor: charts.ColorUtil.fromDartColor(Colors.green),
+  //   ),
+  //   LineChartSeries(
+  //     year: "2021",
+  //     developers: 45000,
+  //     barColor: charts.ColorUtil.fromDartColor(Colors.green),
+  //   ),
+  // ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavagation(tabKey: 1),
+      backgroundColor: Color.fromARGB(255, 225, 222, 235),
       appBar: AppBar(
         title: Text("Chart",
-            style: TextStyle(color: Color.fromARGB(255, 215, 182, 182))),
+            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
         backgroundColor: Colors.deepPurple,
         actions: [
           PopupMenuButton<MenuAction>(

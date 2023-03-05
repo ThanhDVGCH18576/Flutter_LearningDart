@@ -54,6 +54,10 @@ class _BottomNavagationState extends State<BottomNavagation> {
         );
         break;
       case 2:
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          '/input_form/',
+          (route) => false,
+        );
         break;
     }
   }

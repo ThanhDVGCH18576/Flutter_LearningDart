@@ -9,8 +9,8 @@ import 'package:learningdart/views/login_view.dart';
 import 'package:learningdart/views/note_view.dart';
 import 'package:learningdart/views/register_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'firebase_options.dart';
+import 'package:learningdart/input_form.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
         "/register/": (context) => RegisterView(),
         "/note/": (context) => NoteView(),
         "/home-screen/": (context) => HomeScreen(),
+        "/input_form/": (context) => LandingPage(),
       },
       locale: Locale("en"),
       localizationsDelegates: [

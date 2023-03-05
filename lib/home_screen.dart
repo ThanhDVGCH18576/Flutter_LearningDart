@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_build_context_synchronously, unused_field, override_on_non_overriding_member
+// ignore_for_file: prefer_const_constructors, use_build_context_synchronously, unused_field, override_on_non_overriding_member, deprecated_member_use
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -232,7 +232,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         IconButton(
-                          iconSize: 30.0,
+                          iconSize: 25.0,
                           onPressed: () {
                             showBottomSheet(_allData[index]['id']);
                           },
@@ -242,7 +242,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         IconButton(
-                          iconSize: 30.0,
+                          iconSize: 25.0,
                           onPressed: () => showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
