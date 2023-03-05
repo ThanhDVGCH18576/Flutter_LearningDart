@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +33,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "/login/": (context) => LoginView(),
         "/register/": (context) => RegisterView(),
-        "/note/":(context) => NoteView(),
-        "/home-screen/":(context) => HomeScreen(),
+        "/note/": (context) => NoteView(),
+        "/home-screen/": (context) => HomeScreen(),
       },
       locale: Locale("en"),
       localizationsDelegates: [
@@ -63,23 +65,23 @@ class HomePage extends StatelessWidget {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
             return LoginView();
-            //final user = FirebaseAuth.instance.currentUser;
-            //print(user);
-            //print(user?.emailVerified);
-            //if (user != null) {
-              // if (user.emailVerified) {
-              //   return LoginView();
-              // } else {
-              //   return LoginView();
-              // }
-              // Navigator.of(context).pushNamedAndRemoveUntil( 
-              //         '/note/',
-              //         (_) => false,
-              // );
-              // / print(user.emailVerified);
-              
-            //}
-           // return Text("Done");
+          //final user = FirebaseAuth.instance.currentUser;
+          //print(user);
+          //print(user?.emailVerified);
+          //if (user != null) {
+          // if (user.emailVerified) {
+          //   return LoginView();
+          // } else {
+          //   return LoginView();
+          // }
+          // Navigator.of(context).pushNamedAndRemoveUntil(
+          //         '/note/',
+          //         (_) => false,
+          // );
+          // / print(user.emailVerified);
+
+          //}
+          // return Text("Done");
           default:
             return Text("Loading");
         }
@@ -87,4 +89,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-

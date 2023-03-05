@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_build_context_synchronously, unused_field
+// ignore_for_file: prefer_const_constructors, use_build_context_synchronously, unused_field, override_on_non_overriding_member
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -243,9 +243,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         IconButton(
                           iconSize: 30.0,
-                          onPressed: () {
-                            _deleteData(_allData[index]['id']);
-                          },
+                          onPressed: () => showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: const Text('Warning!'),
+                              content: const Text('Do you really delete item?'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'Cancel'),
+                                  child: const Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    _deleteData(_allData[index]['id']);
+                                    Navigator.pop(context, 'Yes');
+                                  },
+                                  child: const Text('Yes'),
+                                ),
+                              ],
+                            ),
+                          ),
                           icon: Icon(
                             Icons.delete,
                             color: Colors.redAccent,
