@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
         "/login/": (context) => LoginView(),
         "/register/": (context) => RegisterView(),
         "/note/": (context) => NoteView(),
-        "/home-screen/": (context) => HomeScreen(),
-        "/input_form/": (context) => LandingPage(),
+        "/home-screen/": (context) => LandingPage(),
+        "/input_form/": (context) => HomeScreen(),
       },
       locale: Locale("en"),
       localizationsDelegates: [

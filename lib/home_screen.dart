@@ -170,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavagation(tabKey: 0),
+      bottomNavigationBar: BottomNavagation(tabKey: 2),
       backgroundColor: Color.fromARGB(255, 225, 222, 235),
       appBar: AppBar(
         title: Text(

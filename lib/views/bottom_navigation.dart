@@ -30,7 +30,7 @@ class _BottomNavagationState extends State<BottomNavagation> {
       style: optionStyle,
     ),
     Text(
-      'Index 2: School',
+      'Index 2: Add item',
       style: optionStyle,
     ),
   ];
@@ -75,8 +75,8 @@ class _BottomNavagationState extends State<BottomNavagation> {
           label: 'Chart',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.school),
-          label: 'School',
+          icon: Icon(Icons.add_business),
+          label: 'Add item',
         ),
       ],
       currentIndex: _selectedIndex,
