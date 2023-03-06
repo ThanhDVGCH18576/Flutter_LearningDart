@@ -36,27 +36,37 @@ class LandingPage extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/logo.png',
-                height: 100,
-              ),
+              // Image.asset(
+              //   'assets/logo.png',
+              //   height: 100,
+              // ),
               SizedBox(height: 16),
-              Text(
-                'Welcome to My App',
-                style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: Text(
+                    'Welcome to Demotrations App',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
               SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () {},
-                child: Text('Get Started'),
+                child: Text('Get Started',
+                    style: TextStyle(
+                      color: Colors.white,
+                    )),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
+                  primary: Color.fromARGB(255, 205, 12, 239),
                   padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                  textStyle: TextStyle(fontSize: 18),
+                  textStyle: TextStyle(
+                    fontSize: 18,
+                  ),
                 ),
               ),
             ],
